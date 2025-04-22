@@ -224,6 +224,28 @@ input[type="number"] {
   }
 }
 
+/* Default: hide the mobile approval text */
+#mobile-approval-inline {
+  display: none;
+}
+
+/* Show only on mobile, styled subtly */
+@media screen and (max-width: 768px) {
+  #mobile-approval-inline {
+    display: block;
+    background-color: #fff8e1;
+    border-left: 4px solid #f39c12;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    color: #333;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+}
+
+
 .mobile-hadith {
     display: none; /* Hidden by default */
     font-size: 15px;
@@ -322,6 +344,7 @@ input[type="number"] {
 }
 
 
+
   
         </style> 
 
@@ -403,10 +426,15 @@ input[type="number"] {
         <div class="glass-card">
 
             
-<div id="approval-box">Approved by Dr. Sheikh Falah Kurkully <br><br>  تمت الموافقة من الدكتور الشيخ فلاح كركولي</div>
+<div id="approval-box">Approved by Dr. Sheikh Falah Kurkully <br> <br>  الموافقة من الدكتور الشيخ فلاح كركولي</div>
 
 
 <h1>Isha Prayer End Time Calculator</h1>
+
+<div id="mobile-approval-inline">
+    Approved by Dr. Sheikh Falah Kurkully <br> <br> الموافقة من الدكتور الشيخ فلاح كركولي
+  </div>
+  
 
 
         <div class="input-group">
@@ -834,5 +862,6 @@ document.getElementById("proof-button").addEventListener("click", function () {
   </script>
   
 
+  
     </body>
 </html> 
