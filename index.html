@@ -91,7 +91,7 @@
     background: rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     padding: 30px;
-    max-width: 600px;
+    max-width: 500px;
     margin: auto;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -131,8 +131,8 @@ input[type="number"] {
 }
 #proof-button {
     position: fixed;
-    top: 50px;      /* Push it down more from the top */
-    right: 50px;    /* Pull it away from the far right edge */
+    top: 50px;
+    right: 50px;
     background-color: #2ecc71;
     color: white;
     border: none;
@@ -164,7 +164,7 @@ input[type="number"] {
 
         #approval-button {
     position: fixed;
-    top: 110px;                           /* directly below proof-button (50 + 12 + ~gap) */
+    top: 110px;
     right: 50px;
     background-color: #f39c12;
     color: white;
@@ -197,27 +197,7 @@ input[type="number"] {
 
 
 
-  #proof-button {
-    top: 50px;
-    background-color: #2ecc71;
-    color: white;
-  }
-
-  #proof-button:hover {
-    background-color: #27ae60;
-  }
-
-  #approval-button {
-    top: 110px;
-    background-color: #f39c12;
-    color: white;
-  }
-
-  #approval-button:hover {
-    background-color: #e67e22;
-  }
-
-  @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   #proof-button,
   #approval-button {
     display: none !important;
@@ -343,6 +323,89 @@ input[type="number"] {
   }
 }
 
+#privacy-button {
+    position: fixed;
+    top: 170px;
+    right: 50px;
+    background-color: #16a085;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    z-index: 9999;
+    transition: background-color 0.3s ease;
+}
+#privacy-button:hover {
+    background-color: #12876f;
+}
+
+@media screen and (max-width: 768px) {
+  #privacy-button {
+    display: none !important;
+  }
+}
+
+/* On medium widths the card can get wide enough to sit under the fixed
+   buttons — nudge the button column further off the card here too. */
+@media screen and (min-width: 769px) and (max-width: 1100px) {
+  #proof-button,
+  #approval-button,
+  .disclaimer-wrapper,
+  #privacy-button {
+    right: 15px;
+  }
+}
+
+#privacy-box {
+    display: none;
+    margin-top: 20px;
+    padding: 20px 25px;
+    background-color: #f4fbfa;
+    border-left: 6px solid #16a085;
+    border-radius: 10px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+#privacy-box h2 {
+    margin-top: 0;
+    font-size: 19px;
+    color: #16a085;
+}
+#privacy-box h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: #2c3e50;
+}
+
+/* Mobile link to open the same privacy box */
+.mobile-privacy-link {
+    display: none;
+    text-align: center;
+    margin: 15px auto;
+}
+.mobile-privacy-link a {
+    color: #16a085;
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-privacy-link {
+    display: block;
+  }
+}
 
 
   
@@ -378,7 +441,7 @@ input[type="number"] {
 
         <!-- ℹ️ Disclaimer Wrapper (hidden on mobile) -->
 <div class="disclaimer-wrapper">
-    <div style="position: fixed; top: 170px; right: 50px; z-index: 9999; text-align: right;">
+    <div style="position: fixed; top: 230px; right: 50px; z-index: 9999; text-align: right;">
       <button id="disclaimer-button" style="
       background-color: #9b59b6;
       color: white;
@@ -399,7 +462,7 @@ input[type="number"] {
   <div id="disclaimer-box" style="
     display: none;
     position: fixed;
-    top: 230px;
+    top: 290px;
     right: 50px;
     width: 300px;
     background-color: #fff8e1;
@@ -415,12 +478,15 @@ input[type="number"] {
     <strong>Disclaimer : </strong><br>Starting the prayer even one minute before its time ends is valid. This is based on the classical view that Isha ends 
     at the midpoint between Maghrib and Fajr. See Dr. Sheikh Falah’s Umdat al-Fiqh series on YouTube for details. <br><br>
 
-    يُعدُّ الشروعُ في الصلاة قبل انقضاء وقتها بدقيقةٍ صحيحًا، وذاك وفقًا لما ذهب إليه جمهور العلماء من أن نهاية وقت العشاء
+    يُعدُّ الشروعُ في الصلاة قبل انقضاء وقتها بدقيقةٍ صحيحًا، وذاك وفقًا لما ذهب إليه جمهور العلماء من أن نهاية وقت العشاء
      تكون عند انتصاف الليل، أي بين المغرب والفجر. وللمزيد من البيان، يُرجى مراجعة دروس الشيخ فلاح في "عمدة الفقه" على منصة يوتيوب
 
     
   </div>
 </div>
+
+<!-- 🔒 Privacy Policy Button (desktop, fixed, stacked below Disclaimer) -->
+<button id="privacy-button">Privacy Policy (سياسة الخصوصية)</button>
   
 
         <div class="glass-card">
@@ -534,6 +600,40 @@ input[type="number"] {
 
 
 <div id="proof-text"></div>
+
+<!-- 🔒 Privacy Policy Box (toggled by button or mobile link) -->
+<div id="privacy-box">
+    <h2>Privacy Policy — Isha End Time (v1.0, Effective July 5, 2026)</h2>
+
+    <h3>Information We Collect</h3>
+    <p>Isha End Time does not collect, store, or share any personally identifiable information. You are never asked to create an account, sign in, provide your name, email, phone number, or share your location.</p>
+
+    <h3>Prayer Time Calculations</h3>
+    <p>All prayer time calculations are performed locally on your device using the settings you provide. No calculation data is transmitted to our servers.</p>
+
+    <h3>Permissions</h3>
+    <p>Isha End Time does not request any device permissions and functions without access to your location, camera, microphone, contacts, storage, or any other sensitive device permissions.</p>
+
+    <h3>Third-Party Services</h3>
+    <p>We do not sell your data to third parties. If future versions include services such as Google Play Services, analytics, crash reporting, or advertisements, this policy will be updated accordingly.</p>
+
+    <h3>Data Security</h3>
+    <p>Because we do not collect personal information, no personal data is stored on our servers.</p>
+
+    <h3>Children's Privacy</h3>
+    <p>Isha End Time is suitable for users of all ages. We do not knowingly collect personal information from children.</p>
+
+    <h3>Changes to This Privacy Policy</h3>
+    <p>We may update this Privacy Policy from time to time. Any changes will be reflected by updating the Effective Date and Version number above.</p>
+
+    <h3>Contact Us</h3>
+    <p>Questions about this Privacy Policy can be sent to <a href="mailto:donations@asksunnah.com">donations@asksunnah.com</a>.</p>
+</div>
+
+<!-- Mobile-only link to open the privacy box -->
+<div class="mobile-privacy-link">
+    <a id="privacy-link-mobile">Privacy Policy (سياسة الخصوصية)</a>
+</div>
 
 
   <!-- Contact Us (Fixed Bottom Center, Desktop Only) -->
@@ -821,8 +921,8 @@ document.getElementById("proof-button").addEventListener("click", function () {
             <p><strong>It was narrated from 'Abdullah bin 'Amr that the Prophet (ﷺ) said:</strong></p>
         <p>"When you pray Fajr, its time is until the first part of the sun appears. When you pray Zuhr, its time is until 'Asr comes. When you pray 'Asr, its time is until the sun turns yellow. 
         When you pray Maghrib, its time is until the twilight has disappeared. <span class="red-text">When you pray 'Isha, its time is until half of the night has passed.</span>"</p>
-        <p><strong>حَدَّثَنَا أَبُو غَسَّانَ الْمِسْمَعِيُّ، وَمُحَمَّدُ بْنُ الْمُثَنَّى، قَالاَ حَدَّثَنَا مُعَاذٌ، - وَهُوَ ابْنُ هِشَامٍ - حَدَّثَنِي أَبِي، عَنْ قَتَادَةَ، عَنْ أَبِي أَيُّوبَ، عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو، أَنَّ نَبِيَّ اللَّهِ صلى الله عليه وسلم قَالَ</strong></p>
-        <p>إِذَا صَلَّيْتُمُ الْفَجْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَطْلُعَ قَرْنُ الشَّمْسِ الأَوَّلُ ثُمَّ إِذَا صَلَّيْتُمُ الظُّهْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَحْضُرَ الْعَصْرُ فَإِذَا صَلَّيْتُمُ الْعَصْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ تَصْفَرَّ الشَّمْسُ فَإِذَا صَلَّيْتُمُ الْمَغْرِبَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَسْقُطَ الشَّفَقُ<span class="red-text"> فَإِذَا صَلَّيْتُمُ الْعِشَاءَ فَإِنَّهُ وَقْتٌ إِلَى نِصْفِ اللَّيْلِ</span></p>
+        <p><strong>حَدَّثَنَا أَبُو غَسَّانَ الْمِسْمَعِيُّ، وَمُحَمَّدُ بْنُ الْمُثَنَّى، قَالاَ حَدَّثَنَا مُعَاذٌ، - وَهُوَ ابْنُ هِشَامٍ - حَدَّثَنِي أَبِي، عَنْ قَتَادَةَ، عَنْ أَبِي أَيُّوبَ، عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو، أَنَّ نَبِيَّ اللَّهِ صلى الله عليه وسلم قَالَ</strong></p>
+        <p>إِذَا صَلَّيْتُمُ الْفَجْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَطْلُعَ قَرْنُ الشَّمْسِ الأَوَّلُ ثُمَّ إِذَا صَلَّيْتُمُ الظُّهْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَحْضُرَ الْعَصْرُ فَإِذَا صَلَّيْتُمُ الْعَصْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ تَصْفَرَّ الشَّمْسُ فَإِذَا صَلَّيْتُمُ الْمَغْرِبَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَسْقُطَ الشَّفَقُ<span class="red-text"> فَإِذَا صَلَّيْتُمُ الْعِشَاءَ فَإِنَّهُ وَقْتٌ إِلَى نِصْفِ اللَّيْلِ</span></p>
         <p><strong>Reference: Sahih Muslim 612a</strong></p>
         `;
         proofText.style.display = "block";
@@ -837,6 +937,21 @@ document.getElementById("proof-button").addEventListener("click", function () {
     }
 });
 
+// Privacy Policy toggle (desktop button + mobile link share the same box)
+function togglePrivacyBox() {
+    const box = document.getElementById("privacy-box");
+    const isHidden = box.style.display === "none" || box.style.display === "";
+    box.style.display = isHidden ? "block" : "none";
+    if (isHidden) {
+        setTimeout(() => {
+            box.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 0);
+    }
+}
+
+document.getElementById("privacy-button").addEventListener("click", togglePrivacyBox);
+document.getElementById("privacy-link-mobile").addEventListener("click", togglePrivacyBox);
+
 
         </script>
 
@@ -844,14 +959,14 @@ document.getElementById("proof-button").addEventListener("click", function () {
     <p><strong>It was narrated from 'Abdullah bin 'Amr that the Prophet (ﷺ) said:</strong></p>
     <p>When you pray Fajr, its time is until the first part of the sun appears. When you pray Zuhr, its time is until 'Asr comes. When you pray 'Asr, its time is until the sun turns yellow. 
     When you pray Maghrib, its time is until the twilight has disappeared. <span class="red-text">When you pray 'Isha, its time is until half of the night has passed</span></p>
-    <p><strong>حَدَّثَنَا أَبُو غَسَّانَ الْمِسْمَعِيُّ، وَمُحَمَّدُ بْنُ الْمُثَنَّى، قَالاَ حَدَّثَنَا مُعَاذٌ، - وَهُوَ ابْنُ هِشَامٍ - حَدَّثَنِي أَبِي، عَنْ قَتَادَةَ، عَنْ أَبِي أَيُّوبَ، عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو، أَنَّ نَبِيَّ اللَّهِ صلى الله عليه وسلم قَالَ</strong></p>
-    <p>إِذَا صَلَّيْتُمُ الْفَجْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَطْلُعَ قَرْنُ الشَّمْسِ الأَوَّلُ ثُمَّ إِذَا صَلَّيْتُمُ الظُّهْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَحْضُرَ الْعَصْرُ فَإِذَا صَلَّيْتُمُ الْعَصْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ تَصْفَرَّ الشَّمْسُ فَإِذَا صَلَّيْتُمُ الْمَغْرِبَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَسْقُطَ الشَّفَقُ<span class="red-text"> فَإِذَا صَلَّيْتُمُ الْعِشَاءَ فَإِنَّهُ وَقْتٌ إِلَى نِصْفِ اللَّيْلِ</span></p>
+    <p><strong>حَدَّثَنَا أَبُو غَسَّانَ الْمِسْمَعِيُّ، وَمُحَمَّدُ بْنُ الْمُثَنَّى، قَالاَ حَدَّثَنَا مُعَاذٌ، - وَهُوَ ابْنُ هِشَامٍ - حَدَّثَنِي أَبِي، عَنْ قَتَادَةَ، عَنْ أَبِي أَيُّوبَ، عَنْ عَبْدِ اللَّهِ بْنِ عَمْرٍو، أَنَّ نَبِيَّ اللَّهِ صلى الله عليه وسلم قَالَ</strong></p>
+    <p>إِذَا صَلَّيْتُمُ الْفَجْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَطْلُعَ قَرْنُ الشَّمْسِ الأَوَّلُ ثُمَّ إِذَا صَلَّيْتُمُ الظُّهْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَحْضُرَ الْعَصْرُ فَإِذَا صَلَّيْتُمُ الْعَصْرَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ تَصْفَرَّ الشَّمْسُ فَإِذَا صَلَّيْتُمُ الْمَغْرِبَ فَإِنَّهُ وَقْتٌ إِلَى أَنْ يَسْقُطَ الشَّفَقُ<span class="red-text"> فَإِذَا صَلَّيْتُمُ الْعِشَاءَ فَإِنَّهُ وَقْتٌ إِلَى نِصْفِ اللَّيْلِ</span></p>
     <p><strong>Reference: Sahih Muslim 612a</strong></p>
 </div>
 
 <div class="mobile-disclaimer">
     <p><strong>Disclaimer:</strong> Starting the prayer one minute before its time ends is considered valid, in accordance with the opinion of the majority of scholars that the end time for Isha is at midnight</p> 
-    <p><strong>تنبيه:</strong> يُعدُّ الشروعُ في الصلاة قبل انقضاء وقتها بدقيقةٍ صحيحًا، وذاك وفقًا لما ذهب إليه جمهور العلماء من أن نهاية وقت العشاء تكون عند انتصاف الليل</p>
+    <p><strong>تنبيه:</strong> يُعدُّ الشروعُ في الصلاة قبل انقضاء وقتها بدقيقةٍ صحيحًا، وذاك وفقًا لما ذهب إليه جمهور العلماء من أن نهاية وقت العشاء تكون عند انتصاف الليل</p>
   </div>
   
 <script>
@@ -864,4 +979,4 @@ document.getElementById("proof-button").addEventListener("click", function () {
 
   
     </body>
-</html> 
+</html>
